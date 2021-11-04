@@ -1,0 +1,74 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.investment'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2020.0.2")
+}
+
+dependencies {
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.projectlombok:lombok'
+
+	implementation group: 'com.investment', name: 'investment-client-library', version: '1.0'
+	implementation group: 'com.investment', name: 'error-handling', version: '1.0'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compile 'com.google.code.gson:gson:2.8.6'
+	compileOnly 'org.projectlombok:lombok'
+
+	testCompile 'junit:junit:4.12'
+	testCompile 'org.testng:testng:6.9.6'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile 'org.springframework.boot:spring-boot-starter-web'
+	testCompile 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+	testCompile 'org.springframework.boot:spring-boot-starter-aop'
+	testCompile group: 'com.investment', name: 'investment-client-library', version: '1.0'
+	testCompile group: 'com.investment', name: 'error-handling', version: '1.0'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnit()
+	maxHeapSize = '1G'
+}
+
+sourceSets {
+	integrationTest {
+		java {
+			compileClasspath += main.output + test.output
+			runtimeClasspath += main.output + test.output
+		}
+	}
+}
+
+configurations {
+	integrationTestCompile.extendsFrom testCompile
+	integrationTestRuntime.extendsFrom testRuntime
+}
+
+task integrationTest(type: Test) {
+	testClassesDirs = sourceSets.integrationTest.output.classesDirs
+	classpath = sourceSets.integrationTest.runtimeClasspath
+}
