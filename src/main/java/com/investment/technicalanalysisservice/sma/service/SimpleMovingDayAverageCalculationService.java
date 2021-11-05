@@ -1,7 +1,6 @@
 package com.investment.technicalanalysisservice.sma.service;
 
 import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageData;
-import com.investment.technicalanalysisservice.api.model.sma.SmaData;
 import com.investment.technicalanalysisservice.sma.web.validation.SimpleMovingDayAverageCalculationValidator;
 import com.investment.technicalanalysisservice.sma.web.validator.SimpleMovingDayAverageCalculatorRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -44,18 +43,19 @@ public class SimpleMovingDayAverageCalculationService {
         }
 
         Double price = Double.valueOf(stockPrice);
-        Double simpleMovingDayAverage = extractSimpleMovingDayAverage(data);
+        Double simpleMovingDayAverage = extractSimpleMovingDayAverage(data).orElse(Double.NaN);
 
         return TechnicalAnalysisServerResponseBuilder.builder()
                 .indicator(Optional.of(determineSmaIndicator.apply(price, simpleMovingDayAverage)))
                 .build();
     }
 
-    private Double extractSimpleMovingDayAverage(SimpleMovingDayAverageData data) {
-        Optional<SmaData> simpleMovingDayAverages = data.getTechnicalAnalysis().getSimpleMovingDayAverages().stream()
+    private Optional<Double> extractSimpleMovingDayAverage(SimpleMovingDayAverageData data) {
+        Optional<Double> simpleMovingDayAverages = data.getTechnicalAnalysis().getSimpleMovingDayAverages().stream()
                 .filter(smaData -> smaData.getDate().equals(calculateSimpleMovingDayAverageDateFor.apply(LocalDate.now(clock))))
-                .findFirst();
-        return Double.valueOf(simpleMovingDayAverages.get().getSimpleMovingDayAverage());
+                .findFirst()
+                .map(smaData -> Double.valueOf(smaData.getSimpleMovingDayAverage()));
+        return simpleMovingDayAverages;
     }
 
     private BiFunction<Double, Double, Indicator> determineSmaIndicator =
@@ -64,7 +64,5 @@ public class SimpleMovingDayAverageCalculationService {
     private Function<LocalDate, String> calculateSimpleMovingDayAverageDateFor = (currentDate) -> currentDate.getDayOfWeek() == DayOfWeek.MONDAY
             ? currentDate.minusDays(3).toString()
             : currentDate.minusDays(1).toString();
-
-
 }
 
