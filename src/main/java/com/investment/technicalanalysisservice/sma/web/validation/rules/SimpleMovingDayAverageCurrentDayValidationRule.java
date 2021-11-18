@@ -1,6 +1,6 @@
 package com.investment.technicalanalysisservice.sma.web.validation.rules;
 
-import com.investment.technicalanalysisservice.api.model.sma.SmaData;
+import com.investment.alphavantageapi.model.sma.SmaData;
 import com.investment.technicalanalysisservice.sma.web.validator.SimpleMovingDayAverageCalculatorRequest;
 import problemdetail.ProblemDetail;
 import problemdetail.ProblemDetailBuilder;
@@ -8,7 +8,6 @@ import problemdetail.ProblemDetailBuilder;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
 
 public class SimpleMovingDayAverageCurrentDayValidationRule implements ValidationRule {
 
@@ -29,6 +28,6 @@ public class SimpleMovingDayAverageCurrentDayValidationRule implements Validatio
         return Optional.empty();
     }
 
-    Predicate<String> isSimpleMovingDayDataPresentForToday = date -> date.equals(LocalDate.now().toString());
+    Predicate<String> isSimpleMovingDayDataPresentForToday = date -> date.equals(LocalDate.now().minusDays(1).toString());
 
 }

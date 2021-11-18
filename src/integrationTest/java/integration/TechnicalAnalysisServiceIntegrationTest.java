@@ -1,6 +1,10 @@
 package integration;
 
-import com.investment.technicalanalysisservice.api.model.sma.*;
+import com.investment.alphavantageapi.api.sma.SimpleMovingDayAverageApi;
+import com.investment.alphavantageapi.model.sma.MetaData;
+import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
+import com.investment.alphavantageapi.model.sma.SmaData;
+import com.investment.alphavantageapi.model.sma.TechnicalAnalysis;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

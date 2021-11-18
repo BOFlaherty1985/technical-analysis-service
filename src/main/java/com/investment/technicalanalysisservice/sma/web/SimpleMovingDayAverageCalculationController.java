@@ -1,7 +1,7 @@
 package com.investment.technicalanalysisservice.sma.web;
 
-import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageApi;
-import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageData;
+import com.investment.alphavantageapi.api.sma.SimpleMovingDayAverageApi;
+import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
 import com.investment.technicalanalysisservice.configuration.TestController;
 import com.investment.technicalanalysisservice.sma.service.SimpleMovingDayAverageCalculationService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import problemdetail.ProblemDetail;
 import server.technicalanalysis.TechnicalAnalysisServerResponse;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 import java.util.UUID;
 

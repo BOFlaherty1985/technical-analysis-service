@@ -21,10 +21,10 @@ import java.util.List;
 @ServletComponentScan
 public class TechnicalAnalysisServiceApplication {
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
-		return restTemplateBuilder.build();
-	}
+//	@Bean
+//	public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
+//		return restTemplateBuilder.build();
+//	}
 
 	@Bean
 	public Clock clock() {

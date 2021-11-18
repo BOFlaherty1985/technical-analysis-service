@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.projectlombok:lombok'
 
+	implementation group: 'com.investment', name: 'alpha-vantage-api', version: '1.0'
 	implementation group: 'com.investment', name: 'investment-client-library', version: '1.0'
 	implementation group: 'com.investment', name: 'error-handling', version: '1.0'
 
@@ -39,6 +40,7 @@ dependencies {
 	testCompile 'org.springframework.boot:spring-boot-starter-web'
 	testCompile 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 	testCompile 'org.springframework.boot:spring-boot-starter-aop'
+	testCompile group: 'com.investment', name: 'alpha-vantage-api', version: '1.0'
 	testCompile group: 'com.investment', name: 'investment-client-library', version: '1.0'
 	testCompile group: 'com.investment', name: 'error-handling', version: '1.0'
 }

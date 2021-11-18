@@ -1,9 +1,9 @@
 package com.investment.technicalanalysisservice.sma.service;
 
-import com.investment.technicalanalysisservice.api.model.sma.MetaData;
-import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageData;
-import com.investment.technicalanalysisservice.api.model.sma.SmaData;
-import com.investment.technicalanalysisservice.api.model.sma.TechnicalAnalysis;
+import com.investment.alphavantageapi.model.sma.MetaData;
+import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
+import com.investment.alphavantageapi.model.sma.SmaData;
+import com.investment.alphavantageapi.model.sma.TechnicalAnalysis;
 import com.investment.technicalanalysisservice.sma.web.validation.SimpleMovingDayAverageCalculationValidator;
 import com.investment.technicalanalysisservice.sma.web.validator.SimpleMovingDayAverageCalculatorRequest;
 import org.junit.Test;
@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.parsing.Problem;
 import problemdetail.ProblemDetail;
 import problemdetail.ProblemDetailBuilder;
 import server.technicalanalysis.Indicator;
@@ -26,7 +25,6 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyObject;
-import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

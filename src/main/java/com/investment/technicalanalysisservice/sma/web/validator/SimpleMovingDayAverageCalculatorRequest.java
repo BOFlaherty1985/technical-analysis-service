@@ -1,6 +1,6 @@
 package com.investment.technicalanalysisservice.sma.web.validator;
 
-import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageData;
+import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
 import lombok.*;
 
 import java.util.function.Predicate;

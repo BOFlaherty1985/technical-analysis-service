@@ -1,6 +1,6 @@
 package com.investment.technicalanalysisservice.sma.service;
 
-import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageData;
+import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
 import com.investment.technicalanalysisservice.sma.web.validation.SimpleMovingDayAverageCalculationValidator;
 import com.investment.technicalanalysisservice.sma.web.validator.SimpleMovingDayAverageCalculatorRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +47,7 @@ public class SimpleMovingDayAverageCalculationService {
 
         return TechnicalAnalysisServerResponseBuilder.builder()
                 .indicator(Optional.of(determineSmaIndicator.apply(price, simpleMovingDayAverage)))
+                .problemDetail(Optional.empty())
                 .build();
     }
 

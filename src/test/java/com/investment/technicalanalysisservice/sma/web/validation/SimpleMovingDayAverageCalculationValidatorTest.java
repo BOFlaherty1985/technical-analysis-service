@@ -1,9 +1,8 @@
 package com.investment.technicalanalysisservice.sma.web.validation;
 
-import com.investment.technicalanalysisservice.api.model.sma.SimpleMovingDayAverageData;
-import com.investment.technicalanalysisservice.api.model.sma.SmaData;
-import com.investment.technicalanalysisservice.api.model.sma.TechnicalAnalysis;
-import com.investment.technicalanalysisservice.sma.web.validation.SimpleMovingDayAverageCalculationValidator;
+import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
+import com.investment.alphavantageapi.model.sma.SmaData;
+import com.investment.alphavantageapi.model.sma.TechnicalAnalysis;
 import com.investment.technicalanalysisservice.sma.web.validation.rules.SimpleMovingDayAverageCurrentDayValidationRule;
 import com.investment.technicalanalysisservice.sma.web.validation.rules.SimpleMovingDayAverageDataValidationRule;
 import com.investment.technicalanalysisservice.sma.web.validation.rules.StockPriceValidationRule;
