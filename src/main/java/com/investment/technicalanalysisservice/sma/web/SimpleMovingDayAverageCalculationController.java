@@ -1,5 +1,6 @@
 package com.investment.technicalanalysisservice.sma.web;
 
+import com.investment.alphavantageapi.api.company.CompanyOverviewApi;
 import com.investment.alphavantageapi.api.sma.SimpleMovingDayAverageApi;
 import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
 import com.investment.technicalanalysisservice.configuration.TestController;

@@ -21,11 +21,6 @@ import java.util.List;
 @ServletComponentScan
 public class TechnicalAnalysisServiceApplication {
 
-//	@Bean
-//	public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
-//		return restTemplateBuilder.build();
-//	}
-
 	@Bean
 	public Clock clock() {
 		return Clock.systemDefaultZone();
@@ -42,9 +37,6 @@ public class TechnicalAnalysisServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TechnicalAnalysisServiceApplication.class, args);
-		Integer t = 1;
-		int two = new Integer(2);
-
 	}
 
 }
