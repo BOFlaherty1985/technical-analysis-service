@@ -1,6 +1,5 @@
 package com.investment.technicalanalysisservice.sma.web;
 
-import com.investment.alphavantageapi.api.company.CompanyOverviewApi;
 import com.investment.alphavantageapi.api.sma.SimpleMovingDayAverageApi;
 import com.investment.alphavantageapi.model.sma.SimpleMovingDayAverageData;
 import com.investment.technicalanalysisservice.configuration.TestController;
@@ -19,6 +18,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static com.investment.technicalanalysisservice.configuration.CorrelationId.CORRELATION_ID;
+import static java.lang.String.format;
 import static problemdetail.ProblemDetailBuilder.problemDetailBuilder;
 
 @RestController
@@ -44,6 +44,7 @@ public class SimpleMovingDayAverageCalculationController extends TestController 
 
         // add test
         if (response.getProblemDetail().isEmpty()) {
+            log.info(format("Successful response returned for ticker[ %s ] and sma [ %s ]", ticker, response.getIndicator().get()));
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.ok().contentType(MediaType.valueOf("application/problem+json")).body(response);
