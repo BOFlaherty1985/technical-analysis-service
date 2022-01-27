@@ -27,6 +27,8 @@ dependencies {
 	implementation group: 'com.investment', name: 'alpha-vantage-api', version: '1.0'
 	implementation group: 'com.investment', name: 'investment-client-library', version: '1.0'
 	implementation group: 'com.investment', name: 'error-handling', version: '1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation group: 'com.investment', name: 'web-security-library', version: '1.0'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
