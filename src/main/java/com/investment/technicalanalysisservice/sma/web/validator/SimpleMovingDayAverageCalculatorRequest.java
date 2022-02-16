@@ -19,6 +19,10 @@ public class SimpleMovingDayAverageCalculatorRequest {
         return data == null;
     }
 
+    public boolean isTechnicalAnalysisDataMissing() {
+        return data.getTechnicalAnalysis().simpleMovingDayAverages == null;
+    }
+
     public static Predicate<String> stockPriceNullOrEmpty = stockPrice ->  stockPrice == null || stockPrice.isEmpty();
 
 }

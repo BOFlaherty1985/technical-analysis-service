@@ -31,8 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 public class TechnicalAnalysisServiceIntegrationTest {
 
-    @Autowired(required = true)
+    private static final String APPLICATION_PROBLEM_JSON = "application/problem+json";
 
+    @Autowired(required = true)
     private MockMvc mockMvc;
 
     @MockBean
@@ -45,9 +46,9 @@ public class TechnicalAnalysisServiceIntegrationTest {
         when(alphaVantageSimpleMovingDayAverageApi.getSimpleMovingDayAverageFor(ticker)).thenReturn(SimpleMovingDayAverageData.builder()
                 .metaData(MetaData.builder().symbol(ticker).build()).build());
 
-        mockMvc.perform(get("/simpleMovingDayAnalysis"))
+        mockMvc.perform(get(String.format("/simpleMovingDayAnalysis?ticker=%s&stockPrice=%s", ticker, "")))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType("application/problem+json"))
                 .andExpect(content().string(containsString("A stock price must be supplied in order to calculate the moving day average indicator")));
     }
 
@@ -61,7 +62,7 @@ public class TechnicalAnalysisServiceIntegrationTest {
 
         mockMvc.perform(get("/simpleMovingDayAnalysis?ticker=" + ticker + "&stockPrice=200.00"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(APPLICATION_PROBLEM_JSON))
                 .andExpect(content().string(containsString("Simple Moving Day Average data must be present order to calculate the moving day average indicator")));
     }
 

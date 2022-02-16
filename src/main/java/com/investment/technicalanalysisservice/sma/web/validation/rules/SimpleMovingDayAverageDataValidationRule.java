@@ -10,7 +10,7 @@ public class SimpleMovingDayAverageDataValidationRule implements ValidationRule 
 
     @Override
     public Optional<ProblemDetail> validate(SimpleMovingDayAverageCalculatorRequest request) {
-        if (request.isSimpleMovingDayAverageDataMissing()) {
+        if (request.isSimpleMovingDayAverageDataMissing() || request.isTechnicalAnalysisDataMissing()) {
             return Optional.of(ProblemDetailBuilder.problemDetailBuilder()
                     // TODO - complete ProblemDetail object
                     .title("Simple Moving Day Average data must be present order to calculate the moving day average indicator")

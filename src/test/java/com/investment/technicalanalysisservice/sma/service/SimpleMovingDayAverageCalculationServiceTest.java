@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyObject;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -65,7 +64,7 @@ public class SimpleMovingDayAverageCalculationServiceTest {
         calculationService.calculate(data, "200.00");
 
         // verify
-        verify(validator).validate(anyObject());
+        verify(validator).validate(any());
     }
 
 
