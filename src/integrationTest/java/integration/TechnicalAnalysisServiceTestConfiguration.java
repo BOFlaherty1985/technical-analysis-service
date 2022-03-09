@@ -23,11 +23,6 @@ import java.util.List;
 public class TechnicalAnalysisServiceTestConfiguration {
 
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
-        return restTemplateBuilder.build();
-    }
-
-    @Bean
     public List<ValidationRule> validationRuleList() {
         List<ValidationRule> validationRules = new ArrayList<>();
         validationRules.add(new StockPriceValidationRule());

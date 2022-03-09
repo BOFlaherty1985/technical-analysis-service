@@ -18,13 +18,11 @@ public class SimpleMovingDayAverageCurrentDayValidationRule implements Validatio
                 .getSimpleMovingDayAverages()
                 .stream().filter(smaData -> isSimpleMovingDayDataPresentForToday.test(smaData.getDate()))
                 .findFirst();
-
         if (!currentDateSma.isPresent()) {
             return Optional.of(ProblemDetailBuilder.problemDetailBuilder()
                     .title("Simple Moving Day Average data is missing for the current data")
                     .build());
         }
-
         return Optional.empty();
     }
 
